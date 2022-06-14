@@ -1,4 +1,5 @@
 # csu-auto-attendance
-中南大学covid打卡自动脚本
+CSU covid打卡自动脚本
 服务器上crontab自动运行命令：
-cd csu-auto-attendance && python3 attend.py [stuID] [stuPwd]
+cd csu-auto-attendance && python3 attend.py parm1 parm2
+其中parm1是你的统一门户学号, parm2是你的统一门户密码
