@@ -23,12 +23,12 @@ pwdEncryptSalt = soup.find(attrs={'id': 'pwdEncryptSalt'})['value']
 with open('encrypt.js', 'r', encoding='utf-8') as f:
     js = f.read()
 js_compiled = compile(js)
-password = js_compiled.call(
+pwd = js_compiled.call(
     'encryptPassword', stuPwd, pwdEncryptSalt)
 
 post_data = {
     'username': stuID,
-    'password': password,
+    'password': pwd,
     'captcha': '',
     '_eventId': 'submit',
     'cllt': 'userNameLogin',
