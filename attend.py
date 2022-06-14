@@ -10,8 +10,8 @@ s = Session()
 soup = BeautifulSoup()
 
 # 从参数中获取学号和密码
-studentID = sys.argv[1]
-studentPWD = sys.argv[2]
+stuID = sys.argv[1]
+stuPwd = sys.argv[2]
 
 login_site = s.get('https://wxxy.csu.edu.cn/ncov/wap/default/index')
 post_url = login_site.url
@@ -24,10 +24,10 @@ with open('encrypt.js', 'r', encoding='utf-8') as f:
     js = f.read()
 js_compiled = compile(js)
 password = js_compiled.call(
-    'encryptPassword', studentPWD, pwdEncryptSalt)
+    'encryptPassword', stuPwd, pwdEncryptSalt)
 
 post_data = {
-    'username': studentID,
+    'username': stuID,
     'password': password,
     'captcha': '',
     '_eventId': 'submit',
