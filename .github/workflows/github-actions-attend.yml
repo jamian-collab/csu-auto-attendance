@@ -18,8 +18,7 @@ jobs:
         python-version: '3.9'
     - name: Install requirments
       run: |
-        cache: 'pip'
-        cache-dependency-path: 'requirements.txt'
+        python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Execute code
       run: |
