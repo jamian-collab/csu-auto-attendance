@@ -7,7 +7,7 @@ on:
     - cron: '0 21,22,23 * * *'
 
 jobs:
-  bot:
+  attend:
     runs-on: ubuntu-latest
     steps:
     - name: Check out repository code
@@ -16,10 +16,12 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: '3.9'
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
     - name: Install requirments
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Execute code
       run: |
-        python attend.py ${{ secrets.USERNAME }} ${{ secrets.PASSWORD }}
+        python attend.py $username $password
