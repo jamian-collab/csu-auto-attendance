@@ -1,17 +1,26 @@
-name: GitHub Actions Demo
-on: [push]
+name: 'GitHub Actions CSU Auto Attendance'
+ 
+on:
+  push:
+  schedule:
+  # 定时任务，在每天的5,6,7点定时自动健康打卡
+    - cron: '0 21,22,23 * * *'
+
 jobs:
-  Explore-GitHub-Actions:
+  bot:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - name: Check out repository code
-        uses: actions/checkout@v3
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+    - name: Check out repository code
+      uses: actions/checkout@v3
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    - name: Install requirments
+      run: |
+        cache: 'pip'
+        cache-dependency-path: 'requirements.txt'
+        pip install -r requirements.txt
+    - name: Execute code
+      run: |
+        python attend.py ${{ secrets.USERNAME }} ${{ secrets.PASSWORD }}
