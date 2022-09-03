@@ -7,4 +7,4 @@ CSU covid打卡自动脚本
 
 cd csu-auto-attendance && python3 attend.py param1 param2
 
-其中parm1是你的统一门户学号, parm2是你的统一门户密码
+其中param1是你的统一门户学号, param2是你的统一门户密码
