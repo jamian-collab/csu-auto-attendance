@@ -74,3 +74,6 @@ post_url = 'https://wxxy.csu.edu.cn/ncov/wap/default/save'
 response = s.post(url=post_url, data=dict, headers=header)
 
 print(response.content.decode('utf-8'))
+
+with open('./GitHub_Action_Results.txt', 'w') as f:
+    f.write(f"This was written with a GitHub action")
