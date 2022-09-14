@@ -76,4 +76,4 @@ response = s.post(url=post_url, data=dict, headers=header)
 print(response.content.decode('utf-8'))
 
 with open('./GitHub_Action_Results.txt', 'w') as f:
-    f.write(f"This was written with a GitHub action\nattendtime: {(datetime.datetime.now()+datetime.timedelta(hours=8)).strftime('%Y%m%d%H')}")
+    f.write(f"This was written with a GitHub action\nattendtime: {(datetime.datetime.now()+datetime.timedelta(hours=8)).strftime('%Y/%m/%d %H:%M:%S')}")
